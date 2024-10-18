@@ -6,6 +6,9 @@ public class Main
 
         System.out.println("Is the stack empty? " + stack.isEmpty());
 
+
+        System.out.println("FIUỎIEOIẺUOEỦIOEỦIOỦEIOEỦIOU");
+        System.out.println("AAAA");
         stack.push(10);
         stack.push(20);
         stack.push(30);
@@ -21,3 +24,4 @@ public class Main
         System.out.println("Is the stack empty? " + stack.isEmpty());
     }
 }
+// test 2
