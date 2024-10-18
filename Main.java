@@ -12,6 +12,8 @@ public class Main
 
         System.out.println("new code github");
 
+        System.out.println("ABC code");
+
         stack.displayStack();
 
         System.out.println("Top element (peek): " + stack.peek());
