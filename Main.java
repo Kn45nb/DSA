@@ -10,6 +10,8 @@ public class Main
         stack.push(20);
         stack.push(30);
 
+        System.out.println("new code github");
+
         stack.displayStack();
 
         System.out.println("Top element (peek): " + stack.peek());
