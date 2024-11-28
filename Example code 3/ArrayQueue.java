@@ -1,4 +1,4 @@
-public class ArrayQueue {
+class ArrayQueue {
     int[] queue;
     int front, rear, capacity;
 
