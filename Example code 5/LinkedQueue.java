@@ -1,16 +1,3 @@
-// Node class to represent each element in the queue
-class Node {
-    int data;     // The value stored in the node
-    Node next;    // Reference to the next node
-
-    // Constructor to initialize a node with data
-    public Node(int data) {
-        this.data = data;
-        this.next = null;   // Initialize the next reference as null
-    }
-}
-
-// LinkedQueue class to manage the queue operations using a linked list
 public class LinkedQueue {
     private Node front;  // Points to the front of the queue
     private Node rear;   // Points to the rear of the queue

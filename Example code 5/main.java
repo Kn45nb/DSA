@@ -1,7 +1,6 @@
-// Main class to demonstrate the LinkedQueue
-public class QueueExample {
+public class main {
     public static void main(String[] args) {
-        // Create a queue to store student IDs
+        // Create a LinkedQueue instance
         LinkedQueue studentQueue = new LinkedQueue();
         
         // Enqueue students
