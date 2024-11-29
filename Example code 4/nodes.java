@@ -42,4 +42,9 @@ class LinkedQueue {
         if (front == null) throw new IllegalStateException("Queue is empty");
         return front.data;
     }
+
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    }
 }
