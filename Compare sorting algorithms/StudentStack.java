@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class StudentStack {
     private Node top = null;
 
@@ -5,27 +7,15 @@ public class StudentStack {
         Node newNode = new Node(student);
         newNode.next = top;
         top = newNode;
-        System.out.println("Added: " + student.getStudentName());
     }
 
     public Student pop() {
         if (isEmpty()) {
-            System.out.println("Stack is empty. No student to remove.");
             return null;
         } else {
             Student removedStudent = top.student;
             top = top.next;
-            System.out.println("Removed: " + removedStudent.getStudentName());
             return removedStudent;
-        }
-    }
-
-    public Student peek() {
-        if (isEmpty()) {
-            System.out.println("Stack is empty.");
-            return null;
-        } else {
-            return top.student;
         }
     }
 
@@ -38,7 +28,6 @@ public class StudentStack {
             System.out.println("No students to display.");
         } else {
             Node current = top;
-            System.out.println("Students in the stack:");
             while (current != null) {
                 System.out.println(current.student);
                 current = current.next;
@@ -46,9 +35,24 @@ public class StudentStack {
         }
     }
 
-    public void sortStudents() {
+    // Copy stack from another stack
+    public void copyFrom(StudentStack other) {
+        ArrayList<Student> temp = new ArrayList<>();
+        Node current = other.top;
+
+        while (current != null) {
+            temp.add(current.student);
+            current = current.next;
+        }
+
+        for (int i = temp.size() - 1; i >= 0; i--) {
+            this.push(temp.get(i));
+        }
+    }
+
+    // Merge Sort
+    public void sortStudentsMerge() {
         top = mergeSort(top);
-        System.out.println("Students sorted by marks.");
     }
 
     private Node mergeSort(Node head) {
@@ -106,44 +110,41 @@ public class StudentStack {
         return slow;
     }
 
-    public Student searchStudent(String studentID) {
-        Node current = top;
-        while (current != null) {
-            if (current.student.getStudentID().equals(studentID)) {
-                return current.student;
-            }
-            current = current.next;
+    // Bubble Sort
+    public void sortStudentsBubble() {
+        if (top == null || top.next == null) {
+            return;
         }
-        System.out.println("Student with ID " + studentID + " not found.");
-        return null;
-    }
 
-    public void editStudent(String studentID, String name, float marks) {
-        Student student = searchStudent(studentID);
-        if (student != null) {
-            student.setStudentName(name);
-            student.setMarks(marks);
-            System.out.println("Updated details for student ID: " + studentID);
-        }
-    }
-
-    public void deleteStudent(String studentID) {
-        if (isEmpty()) {
-            System.out.println("Stack is empty. No student to delete.");
-        } else if (top.student.getStudentID().equals(studentID)) {
-            pop();
-        } else {
+        boolean swapped;
+        do {
             Node current = top;
-            while (current.next != null && !current.next.student.getStudentID().equals(studentID)) {
-                current = current.next;
-            }
+            Node prev = null;
+            swapped = false;
 
-            if (current.next != null) {
-                current.next = current.next.next;
-                System.out.println("Deleted student with ID: " + studentID);
-            } else {
-                System.out.println("Student with ID " + studentID + " not found.");
+            while (current != null && current.next != null) {
+                if (current.student.getMarks() > current.next.student.getMarks()) {
+                    swapped = true;
+
+                    // Swap nodes
+                    if (prev == null) {
+                        Node temp = current.next;
+                        current.next = temp.next;
+                        temp.next = current;
+                        top = temp;
+                        prev = temp;
+                    } else {
+                        Node temp = current.next;
+                        current.next = temp.next;
+                        temp.next = current;
+                        prev.next = temp;
+                        prev = temp;
+                    }
+                } else {
+                    prev = current;
+                    current = current.next;
+                }
             }
-        }
+        } while (swapped);
     }
 }

@@ -1,29 +1,36 @@
 public class main {
     public static void main(String[] args) {
-        StudentStack studentStack = new StudentStack();
-        studentStack.push(new Student("101", "Alice", 8.5F));
-        studentStack.push(new Student("102", "Bob", 6.0F));
-        studentStack.push(new Student("103", "Charlie", 4.5F));
+        StudentStack studentStackMerge = new StudentStack();
+        StudentStack studentStackBubble = new StudentStack();
 
+        // Thêm sinh viên vào stack
+        studentStackMerge.push(new Student("101", "Alice", 8.5F));
+        studentStackMerge.push(new Student("102", "Bob", 6.0F));
+        studentStackMerge.push(new Student("103", "Charlie", 4.5F));
+        studentStackMerge.push(new Student("104", "David", 7.8F));
+        studentStackMerge.push(new Student("105", "Eva", 9.1F));
+
+        // Sao chép stack để sử dụng cho Bubble Sort
+        studentStackBubble.copyFrom(studentStackMerge);
+
+        // Hiển thị ban đầu
         System.out.println("Initial students:");
-        studentStack.displayStudents();
+        studentStackMerge.displayStudents();
 
-        System.out.println("\nSorting students by marks:");
-        studentStack.sortStudents();
-        studentStack.displayStudents();
+        // Sắp xếp bằng Merge Sort
+        System.out.println("\nSorting students using Merge Sort:");
+        long startMerge = System.nanoTime();
+        studentStackMerge.sortStudentsMerge();
+        long endMerge = System.nanoTime();
+        studentStackMerge.displayStudents();
+        System.out.println("Time taken by Merge Sort: " + (endMerge - startMerge) + " ns");
 
-        System.out.println("\nEditing student with ID 102:");
-        studentStack.editStudent("102", "Bobby", 7.0F);
-        studentStack.displayStudents();
-
-        System.out.println("\nDeleting student with ID 103:");
-        studentStack.deleteStudent("103");
-        studentStack.displayStudents();
-
-        System.out.println("\nSearching for student with ID 101:");
-        Student foundStudent = studentStack.searchStudent("101");
-        if (foundStudent != null) {
-            System.out.println("Found: " + foundStudent);
-        }
+        // Sắp xếp bằng Bubble Sort
+        System.out.println("\nSorting students using Bubble Sort:");
+        long startBubble = System.nanoTime();
+        studentStackBubble.sortStudentsBubble();
+        long endBubble = System.nanoTime();
+        studentStackBubble.displayStudents();
+        System.out.println("Time taken by Bubble Sort: " + (endBubble - startBubble) + " ns");
     }
 }
