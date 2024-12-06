@@ -9,17 +9,17 @@ public class Stack {
         Node newNode = new Node(student);
         newNode.next = top;
         top = newNode;
-        System.out.println("Thêm: " + student);
+        System.out.println("Added: " + student);
     }
 
     public Student pop() {
         if (isEmpty()) {
-            System.out.println("Stack rỗng. Không thể xóa.");
+            System.out.println("Stack is empty. Cannot remove.");
             return null;
         }
         Student removedStudent = top.data;
         top = top.next;
-        System.out.println("Xóa: " + removedStudent);
+        System.out.println("Removed: " + removedStudent);
         return removedStudent;
     }
 
@@ -31,7 +31,7 @@ public class Stack {
             }
             current = current.next;
         }
-        System.out.println("Không tìm thấy sinh viên có ID: " + id);
+        System.out.println("Student with ID " + id + " not found.");
         return null;
     }
 
@@ -40,16 +40,16 @@ public class Stack {
         if (student != null) {
             student.setName(newName);
             student.setMarks(newMarks);
-            System.out.println("Cập nhật thông tin sinh viên ID " + id);
+            System.out.println("Updated student with ID " + id);
         }
     }
 
     public void displayStudents() {
         if (isEmpty()) {
-            System.out.println("Không có sinh viên nào để hiển thị.");
+            System.out.println("No students to display.");
         } else {
             Node current = top;
-            System.out.println("Danh sách sinh viên trong stack:");
+            System.out.println("Student list in stack:");
             while (current != null) {
                 System.out.println(current.data);
                 current = current.next;
@@ -59,10 +59,8 @@ public class Stack {
 
     public void sortStudents() {
         if (top == null || top.next == null) return;
-
-        // Merge Sort
         top = mergeSort(top);
-        System.out.println("Sinh viên đã được sắp xếp.");
+        System.out.println("Students sorted.");
     }
 
     private Node mergeSort(Node head) {
