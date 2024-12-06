@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class StudentStack {
     private Node top = null;
 
