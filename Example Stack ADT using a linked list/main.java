@@ -2,28 +2,35 @@ public class main {
     public static void main(String[] args) {
         Stack stack = new Stack();
 
-        Student student1 = new Student("Alice", 101);
-        Student student2 = new Student("Bob", 102);
-        Student student3 = new Student("Charlie", 103);
+        // Thêm sinh viên vào stack
+        stack.push(new Student("Alice", 101, 8.5f));
+        stack.push(new Student("Bob", 102, 6.0f));
+        stack.push(new Student("Charlie", 103, 4.5f));
 
-        stack.push(student1);
-        stack.push(student2);
-        stack.push(student3);
-
-        stack.displayStudents(); // Hiển thị tất cả sinh viên
-
-        stack.editStudent(102, "Bobby"); // Chỉnh sửa thông tin sinh viên
+        // Hiển thị danh sách sinh viên
+        System.out.println("Danh sách sinh viên ban đầu:");
         stack.displayStudents();
 
-        stack.deleteStudent(103); // Xóa sinh viên
+        // Sắp xếp sinh viên theo điểm số
+        stack.sortStudents();
+        System.out.println("\nDanh sách sinh viên sau khi sắp xếp:");
         stack.displayStudents();
 
-        Student found = stack.searchStudent(101); // Tìm kiếm sinh viên
-        if (found != null) {
-            System.out.println("Found: " + found);
+        // Tìm kiếm sinh viên
+        System.out.println("\nTìm kiếm sinh viên có ID 102:");
+        Student foundStudent = stack.searchStudent(102);
+        if (foundStudent != null) {
+            System.out.println("Tìm thấy: " + foundStudent);
         }
 
-        stack.pop(); // Loại bỏ sinh viên từ stack
+        // Chỉnh sửa thông tin sinh viên
+        System.out.println("\nChỉnh sửa thông tin sinh viên có ID 102:");
+        stack.editStudent(102, "Bobby", 7.0f);
+        stack.displayStudents();
+
+        // Xóa sinh viên khỏi stack
+        System.out.println("\nXóa sinh viên có ID 103:");
+        stack.pop();
         stack.displayStudents();
     }
 }
