@@ -2,9 +2,13 @@ class Node {
     int data;
     Node next;
 
-    public Node(int data) {
-        this.data = data;
+    public Node(Student student) {
+        this.data = student;
         this.next = null;
+    }
+
+    public Node(Student student) {
+        //TODO Auto-generated constructor stub
     }
 }
 
