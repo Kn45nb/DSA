@@ -10,7 +10,7 @@ public class main {
         stack.push(student2);
         stack.push(student3);
 
-        stack.displayStudents();
+        stack.displayStudents(); // Hiển thị tất cả sinh viên
 
         stack.editStudent(102, "Bobby"); // Chỉnh sửa thông tin sinh viên
         stack.displayStudents();
