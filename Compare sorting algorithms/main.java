@@ -3,7 +3,7 @@ import java.util.Random;
 public class main {
     public static void main(String[] args) {
         // thay đổi random
-        int x = 100;
+        int x = 1000000;
 
         StudentStack studentStackMerge = new StudentStack();
         StudentStack studentStackBubble = new StudentStack();
