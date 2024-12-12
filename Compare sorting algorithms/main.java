@@ -1,48 +1,69 @@
 import java.util.Random;
 
-public class main {
-    public static void main(String[] args) {
-        // thay đổi random
-        int x = 50000;
-
-        StudentStack studentStackMerge = new StudentStack();
-        StudentStack studentStackBubble = new StudentStack();
-        StudentStack studentStackQuick = new StudentStack();
-
-        Random random = new Random();
-        for (int i = 1; i <= x; i++) {
-            studentStackMerge.push(new Student(
-                "ID" + i,
-                "Student" + i,
-                random.nextFloat() * 10
-            ));
+public class main
+{
+    public static void main(String[] args)
+    {
+        StudentStack studentStack_Bubble = new StudentStack();
+        StudentStack studentStack_Merge = new StudentStack();
+        StudentStack studentStack_Quick = new StudentStack();
+        
+        for (int i = 0; i < 100; i++)
+        {
+            studentStack_Bubble.push(new Student("101", "Alice", new Random().nextInt(100) ));
+            studentStack_Merge.push(new Student("102", "Bob", new Random().nextInt(100) ));
+            studentStack_Quick.push(new Student("103", "Charlie", new Random().nextInt(100) ));
         }
 
-        studentStackBubble.copyFrom(studentStackMerge);
-        studentStackQuick.copyFrom(studentStackMerge);
+//----------------------------------------------------------------------------------------------------------------        
+        long st = System.nanoTime();
 
-        System.out.println("Initial students:");
-        studentStackMerge.displayStudents();
+            studentStack_Bubble.sortStudents3();
 
-        // Sắp xếp bằng Merge Sort
-        System.out.println("\nMerge Sort:");
-        long startMerge = System.nanoTime();
-        studentStackMerge.sortStudentsMerge();
-        long endMerge = System.nanoTime();
-        System.out.println((endMerge - startMerge) + " ns");
+        long ed = System.nanoTime();
+        long las = ed - st;
+        System.out.print("BubbleSort:   " + las + "\n");
 
-        // Sắp xếp bằng Bubble Sort
-        System.out.println("\nBubble Sort");
-        long startBubble = System.nanoTime();
-        studentStackBubble.sortStudentsBubble();
-        long endBubble = System.nanoTime();
-        System.out.println((endBubble - startBubble) + " ns");
+        st = System.nanoTime();
 
-        // Sắp xếp bằng Quick Sort
-        System.out.println("\nQuickSort");
-        long startQuick = System.nanoTime();
-        studentStackQuick.sortStudentsQuick();
-        long endQuick = System.nanoTime();
-        System.out.println((endQuick - startQuick) + " ns");
+            studentStack_Merge.sortStudents1();
+
+        ed = System.nanoTime();
+        las = ed - st;
+        System.out.print("MergeSort:    " + las + "\n");
+
+        st = System.nanoTime();
+
+            studentStack_Quick.sortStudents2();
+
+        ed = System.nanoTime();
+        las = ed - st;
+        System.out.print("QuickSort:    " + las + "\n");
+
+
+
+
+
+
+        /*System.out.println("Initial students:");
+        studentStack.displayStudents();
+
+        System.out.println("\nSorting students by marks:");
+        studentStack.sortStudents();
+        studentStack.displayStudents();
+
+        System.out.println("\nEditing student with ID 102:");
+        studentStack.editStudent("102", "Bobby", 7.0F);
+        studentStack.displayStudents();
+
+        System.out.println("\nDeleting student with ID 103:");
+        studentStack.deleteStudent("103");
+        studentStack.displayStudents();
+
+        System.out.println("\nSearching for student with ID 101:");
+        Student foundStudent = studentStack.searchStudent("101");
+        if (foundStudent != null) {
+            System.out.println("Found: " + foundStudent);
+        }*/
     }
 }

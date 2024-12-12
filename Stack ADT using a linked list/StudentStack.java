@@ -46,7 +46,7 @@ public class StudentStack {
         }
     }
 
-    public void sortStudents() {
+    public void sortStudents1() {
         top = mergeSort(top);
         System.out.println("Students sorted by marks.");
     }

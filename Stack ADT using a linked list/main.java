@@ -1,11 +1,26 @@
+import java.util.Random;
+
 public class main {
     public static void main(String[] args) {
-        StudentStack studentStack = new StudentStack();
-        studentStack.push(new Student("101", "Alice", 8.5F));
-        studentStack.push(new Student("102", "Bob", 6.0F));
-        studentStack.push(new Student("103", "Charlie", 4.5F));
+        StudentStack studentStack_Bubble = new StudentStack();
+        StudentStack studentStack_Merge = new StudentStack();
+        StudentStack studentStack_Quick = new StudentStack();
+        
+        for (int i = 0; i < 1000; i++)
+        {
+            studentStack_Bubble.push(new Student("101", "Alice", new Random().nextInt(100) ));
+            studentStack_Merge.push(new Student("102", "Bob", new Random().nextInt(100)));
+            studentStack_Quick.push(new Student("103", "Charlie", new Random().nextInt(100)));
+        }
 
-        System.out.println("Initial students:");
+        studentStack_Bubble.
+
+
+
+
+        
+
+        /*System.out.println("Initial students:");
         studentStack.displayStudents();
 
         System.out.println("\nSorting students by marks:");
@@ -23,7 +38,7 @@ public class main {
         System.out.println("\nSearching for student with ID 101:");
         Student foundStudent = studentStack.searchStudent("101");
         if (foundStudent != null) {
-            System.out.println("Found: " + foundStudent);
+            System.out.println("Found: " + foundStudent);*/
         }
     }
 }
